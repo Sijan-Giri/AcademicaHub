@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from "sequelize-typescript";
 import { envConfig } from "../config/config";
 
 const sequelize = new Sequelize({
@@ -8,6 +8,7 @@ const sequelize = new Sequelize({
   host: envConfig.host as string,
   dialect: "mysql",
   port: Number(envConfig.dbPort),
+  models : [__dirname + "/models"]
 });
 
 sequelize
@@ -18,5 +19,10 @@ sequelize
   .catch((err) => {
     console.log(err);
   });
+
+  sequelize.sync({force : false , alter : false})
+  .then(() => {
+    console.log("Migrated !!")
+  })
 
 export default sequelize;

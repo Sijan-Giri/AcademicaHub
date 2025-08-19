@@ -1,5 +1,5 @@
 import express from "express";
-import AuthController from "../../controller/globals/auth/auth.controller";
+import AuthController from "../../controller/globals/auth/authController";
 const router = express.Router();
 
 router.route("/register").post(AuthController.registerUser);

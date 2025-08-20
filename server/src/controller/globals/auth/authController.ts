@@ -63,7 +63,7 @@ class AuthController{
             return
         }
 
-        const token = jwt.sign({id:userExists[0]?.id},envConfig.secretKey as string)
+        const token = jwt.sign({id:userExists[0]?.userId},envConfig.secretKey as string)
 
         res.status(200).json({
             message : "User loggedIn successfully !!",

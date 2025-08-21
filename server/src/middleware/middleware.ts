@@ -5,9 +5,11 @@ import User from "../database/models/user.model";
 
 export interface IExtendedRequest extends Request{
     user ?: {
+        userId ?: string,
         email : string,
         username : string,
-        role : string | null
+        role : string | null,
+        currentInstituteNumber : string
     }
 }
 
@@ -28,6 +30,7 @@ class Middleware {
             }
             else {
                 const userData = await User.findByPk(result.id);
+                console.log("Hello iam sijan",userData)
                 if(!userData) {
                     res.status(404).json({
                         message : "No users found with that id !!"

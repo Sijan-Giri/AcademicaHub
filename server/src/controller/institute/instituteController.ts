@@ -1,11 +1,12 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import sequelize from "../../database/connection";
 import generateRandomNumber from "../../services/generateRandomNumber";
 import { IExtendedRequest } from "../../middleware/middleware";
+import User from "../../database/models/user.model";
 
 class InstituteController {
   static async createInstitute(req: IExtendedRequest, res: Response) {
-    console.log(req.user)
+    const userData = req.user && req.user.userId;
     const {
       instituteName,
       instituteEmail,
@@ -54,6 +55,16 @@ class InstituteController {
         ],
       }
     );
+    if(req.user) {
+      await User.update({
+        currentInstituteNumber : instituteNumber
+      },{
+        where : {
+          userId : userData
+        }
+      });
+       
+    }
     res.status(200).json({
       message: "Institute created successfully !!",
     });

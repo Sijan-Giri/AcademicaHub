@@ -32,6 +32,11 @@ class User extends Model {
     type: DataType.ENUM("teacher", "super-admin", "institute", "student"),
   })
   declare role: string;
+
+  @Column({
+    type : DataType.STRING
+  })
+  declare currentInstituteNumber : string
 }
 
 export default User;

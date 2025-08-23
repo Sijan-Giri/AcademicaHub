@@ -55,9 +55,16 @@ class InstituteController {
         ],
       }
     );
+
+    await sequelize.query(`CREATE TABLE IF NOT EXISTS user_institute(
+      id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+      userId INT REFERENCES users(id),
+      instituteNumber VARCHAR(255) UNIQUE
+      )`)
     if(req.user) {
       await User.update({
-        currentInstituteNumber : instituteNumber
+        currentInstituteNumber : instituteNumber,
+        role : "institute"
       },{
         where : {
           userId : userData

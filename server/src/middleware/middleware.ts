@@ -10,7 +10,8 @@ export interface IExtendedRequest extends Request{
         username : string,
         role : string | null,
         currentInstituteNumber : string
-    }
+    },
+    instituteNumber ?: number | string
 }
 
 class Middleware {

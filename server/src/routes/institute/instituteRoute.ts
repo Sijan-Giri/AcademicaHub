@@ -4,6 +4,6 @@ import Middleware from "../../middleware/middleware";
 
 const router = express();
 
-router.route("/").post(Middleware.isLoggedIn,InstituteController.createInstitute);
+router.route("/").post(Middleware.isLoggedIn,InstituteController.createInstitute , InstituteController.createTeacher , InstituteController.createStudent, InstituteController.createCourse);
 
 export default router

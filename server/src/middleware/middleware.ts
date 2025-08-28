@@ -30,8 +30,9 @@ class Middleware {
                 })
             }
             else {
-                const userData = await User.findByPk(result.id);
-                console.log("Hello iam sijan",userData)
+                const userData = await User.findByPk(result.id,{
+                    attributes : ['userId' , 'username' , 'email' , 'role' , 'currentInstituteNumber']
+                });
                 if(!userData) {
                     res.status(404).json({
                         message : "No users found with that id !!"

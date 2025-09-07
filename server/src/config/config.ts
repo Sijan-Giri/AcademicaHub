@@ -8,5 +8,8 @@ export const envConfig = {
   password: process.env.PASSWORD,
   host: process.env.HOST,
   dbPort: process.env.DB_PORT,
-  secretKey : process.env.SECRET_KEY
+  secretKey : process.env.SECRET_KEY,
+  cloudinaryName : process.env.CLOUDINARY_NAME,
+  cloudinaryApiKey : process.env.CLOUDINARY_API_KEY,
+  cloudinaryApiSecret : process.env.CLOUDINARY_API_SECRET
 };
